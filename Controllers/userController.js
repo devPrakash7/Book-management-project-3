@@ -121,6 +121,7 @@ const loginUser = async function (req, res) {
     return res.status(400).send({status:false, msg:"password must be present"})
     }
     let user = await userModel.findOne({ email: email, password: password });
+    console.log(user)
 
     if (!user){
       return res.status(401).send({status: false,msg: "Invalid login credenctial",});
