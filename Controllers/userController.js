@@ -25,7 +25,7 @@ const isValidRequestBody = function (request) {
 
 // function for title validation
 const isValidTitle = function(title){
-    return ["Mr", "Mrs","Miss"].indexOf(title)!== -1
+    return ["Mr", "Mrs","Miss"].indexOf(title) !== -1
 }
 
 
@@ -127,8 +127,6 @@ const loginUser = async function (req, res) {
       return res.status(401).send({status: false,msg: "Invalid login credenctial",});
     }
 
-    
-    
 
 let token = jwt.sign(
     {

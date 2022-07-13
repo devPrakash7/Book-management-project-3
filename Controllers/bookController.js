@@ -11,7 +11,8 @@ const isValid = function (value) {
   return true;
 };
 
-const isValidRequestBody = function (request) {
+
+const isValidRequestBody =  function (request){
   return Object.keys(request).length > 0;
 };
 
@@ -108,8 +109,8 @@ const createBook = async function (req, res) {
       ISBN: ISBN,
       category: category,
       subcategory: subcategory,
-      bookcover: uploadedFileURL,
       releasedAt: Date.now(),
+
     };
 
     const newBook = await bookModel.create(newBookData);
@@ -124,6 +125,8 @@ const createBook = async function (req, res) {
       .send({ status: false, message: "Error", error: err.message });
   }
 };
+
+
 
 const getBooks = async function (req, res) {
   try {
@@ -221,6 +224,7 @@ const getBookReviews = async function (req, res) {
   }
 };
 
+
 const updateBook = async function (req, res) {
   try {
     let bookId = req.params.bookId;
@@ -284,7 +288,9 @@ const updateBook = async function (req, res) {
   }
 };
 
+
 const deleteBook = async function (req, res) {
+  
   try {
     let bookId = req.params.bookId;
 
@@ -310,7 +316,7 @@ const deleteBook = async function (req, res) {
 
     const deleteBook = await bookModel.findOneAndUpdate(
       { _id: bookId },
-      { $set: { isDeleted: true, deletedAt: Date.now() } },
+      { $set: {sDeleted: true,  deletedAt: Date.now() } },
       { new: true }
     );
 

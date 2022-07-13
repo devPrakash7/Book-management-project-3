@@ -8,6 +8,8 @@ const isValidObjectId = function (ObjectId) {
   return mongoose.Types.ObjectId.isValid(ObjectId);
 };
 
+
+
 const authentication = async function (req, res, next) {
   try {
     let token = req.headers["x-api-key"];
@@ -38,6 +40,7 @@ const authentication = async function (req, res, next) {
     res.status(500).send({ msg: "Error", error: err.message });
   }
 };
+
 
 const authorization = async function (req, res, next) {
   try {
@@ -71,6 +74,7 @@ const authorization = async function (req, res, next) {
     res.status(500).send({ msg: "Error", error: err.message });
   }
 };
+
 
 module.exports.authentication = authentication;
 module.exports.authorization = authorization;

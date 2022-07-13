@@ -2,6 +2,7 @@ const reviewModel = require("../Models/reviewModel");
 const bookModel = require("../Models/bookModel");
 const mongoose = require("mongoose");
 
+
 const isValid = function (value) {
   if (typeof value === "undefined" || value === null) return false;
   if (typeof value === "string" && value.trim().length === 0) return false;
@@ -10,17 +11,23 @@ const isValid = function (value) {
   return true;
 };
 
+
+
 const isValidObjectId = function (ObjectId) {
   return mongoose.Types.ObjectId.isValid(ObjectId);
 };
+
 
 const isValidRequestBody = function (request) {
   return Object.keys(request).length > 0;
 };
 
+
 const ratingRegex = /^[1-5]$/;
 
+
 const createReview = async function (req, res) {
+ 
   try {
     let requestBody = req.body;
     let bookId = req.params.bookId;
@@ -229,7 +236,7 @@ const deleteReview = async function (req, res) {
       { _id: bookId, isDeleted: false },
       { $inc: { reviews: -1 } },
       { updatedAt: Date.now() }
-    ); //review:-1
+    ); //reviesw -1
 
     return res
       .status(200)

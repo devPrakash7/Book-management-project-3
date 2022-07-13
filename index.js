@@ -7,6 +7,7 @@ const port = process.env.PORT || 5000;
 //MIDDLEWARE
 app.use(express.json());
 
+
 mongoose
   .connect(
     "mongodb+srv://Manisha:9831671085@manisha.t8nm5.mongodb.net/groupno49",
